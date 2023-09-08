@@ -14,7 +14,7 @@ Add Ideation Payload Example :
         {
           "question": 1,
           "questionId": 3,
-          "value": [true, true, true, false],
+          "value": [true, true, true, false], // For Multiple Choices
           "reason": "lorem ipsum",
         },
     ],
