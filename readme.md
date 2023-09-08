@@ -40,6 +40,7 @@ Add Ideation Payload Example :
           "reason": "lorem ipsum",
         },
     ],
+    "objective": "lorem ipsum"
 }
 
 ```
