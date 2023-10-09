@@ -41,6 +41,8 @@ Validate Payload Example :
 
 ```json
 {
+  "ideation_id" : 1,
+  "ideation_date" : "10-11-2023",
   "ideation_name" : "Contoh Ideation",
   "objective" : "Contoh Objective",
   "project_scope" : "Contoh Scope",
