@@ -55,3 +55,38 @@ Validate Payload Example :
   "with_poc" : true,
 }
 ```
+
+Create Quesioner By GentaGendis
+```json
+{
+  "gen_id" : 12, // Id Genta Gendis
+  "ideation_id" : 1,
+  "quesioner_id" : 2,
+  "intangible_benefit": [
+      {
+        "questionId": 3,
+        "value": [true, true, true, false], // For Multiple Choices
+        "reason": "lorem ipsum",
+      },
+  ],
+  "tangible_benefit": [
+      {
+        "questionId": 1,
+        "value": "HIGH",
+        "reason": "lorem ipsum",
+      },
+      {
+        "questionId": 5,
+        "value": 1,
+        "reason": "lorem ipsum",
+      },
+  ],
+  "time_delivery": [
+      {
+        "questionId": 124,
+        "value": "HIGH",
+        "reason": "lorem ipsum",
+      },
+  ],
+}
+```
