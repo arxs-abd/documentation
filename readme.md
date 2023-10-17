@@ -10,8 +10,20 @@ Add Ideation Payload Example :
     "intangible_benefit": [
         {
           "questionId": 3,
-          "value": [true, true, true, false], // For Multiple Choices
-          "reason": "lorem ipsum",
+          "value": [
+            {
+              "details" : "Contoh Detail"
+            },
+            {
+              "details" : "Contoh Detail 2"
+            },
+            false, // If User Not Select
+            {
+              "others" : "Contoh Others", // If Users select Others
+              "details" : "Bla Bla Bla"
+            },
+            false
+          ], // For Multiple Choices
         },
     ],
     "tangible_benefit": [
