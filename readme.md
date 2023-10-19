@@ -9,41 +9,48 @@ Add Ideation Payload Example :
     "candidates" : [1],
     "intangible_benefit": [
         {
-          "questionId": 3,
-          "value": [
-            {
-              "details" : "Contoh Detail"
-            },
-            {
-              "details" : "Contoh Detail 2"
-            },
-            false, // If User Not Select
-            {
-              "others" : "Contoh Others", // If Users select Others
-              "details" : "Bla Bla Bla"
-            },
-            false
-          ], // For Multiple Choices
-        },
+            "questionId": 2,
+            "value": [
+                {
+                  "details" : "Contoh Detail Intangible"
+                },
+                {
+                  "details" : "Contoh Detail Intangible 2"
+                },
+                false,
+                {
+                  "others" : "Contoh Others",
+                  "details" : "Contoh Detail Intangible 3"
+                },
+                false
+            ]
+        }
     ],
     "tangible_benefit": [
         {
-          "questionId": 1,
-          "value": "HIGH",
-          "reason": "lorem ipsum",
+            "questionId": 4,
+            "value": [
+                {
+                    "details" : "Contoh Detail Tangible 1"
+                },
+                {
+                    "details" : "Contoh Detail Tangible 2"
+                },
+                false
+            ]
         },
         {
-          "questionId": 5,
-          "value": 1,
-          "reason": "lorem ipsum",
-        },
+            "questionId": 3,
+            "value": "HIGH",
+            "details": "lorem ipsum"
+        }
     ],
     "time_delivery": [
         {
-          "questionId": 124,
-          "value": "HIGH",
-          "reason": "lorem ipsum",
-        },
+            "questionId": 6,
+            "value": "HIGH",
+            "details": "lorem ipsum"
+        }
     ],
     "objective": "lorem ipsum"
 }
@@ -71,34 +78,53 @@ Validate Payload Example :
 Create Quesioner By GentaGendis
 ```json
 {
-  "gen_id" : 12, // Id Genta Gendis
-  "ideation_id" : 1,
-  "quesioner_id" : 2,
-  "intangible_benefit": [
-      {
-        "questionId": 3,
-        "value": [true, true, true, false], // For Multiple Choices
-        "reason": "lorem ipsum",
-      },
-  ],
-  "tangible_benefit": [
-      {
-        "questionId": 1,
-        "value": "HIGH",
-        "reason": "lorem ipsum",
-      },
-      {
-        "questionId": 5,
-        "value": 1,
-        "reason": "lorem ipsum",
-      },
-  ],
-  "time_delivery": [
-      {
-        "questionId": 124,
-        "value": "HIGH",
-        "reason": "lorem ipsum",
-      },
-  ],
+    "gen_id" : 12, // Id Genta Gendis
+    "ideation_id" : 1,
+    "quesioner_id" : 2,
+    "intangible_benefit": [
+        {
+            "questionId": 2,
+            "value": [
+                {
+                  "details" : "Contoh Detail Intangible"
+                },
+                {
+                  "details" : "Contoh Detail Intangible 2"
+                },
+                false,
+                {
+                  "others" : "Contoh Others",
+                  "details" : "Contoh Detail Intangible 3"
+                },
+                false
+            ]
+        }
+    ],
+    "tangible_benefit": [
+        {
+            "questionId": 4,
+            "value": [
+                {
+                    "details" : "Contoh Detail Tangible 1"
+                },
+                {
+                    "details" : "Contoh Detail Tangible 2"
+                },
+                false
+            ]
+        },
+        {
+            "questionId": 3,
+            "value": "HIGH",
+            "details": "lorem ipsum"
+        }
+    ],
+    "time_delivery": [
+        {
+            "questionId": 6,
+            "value": "HIGH",
+            "details": "lorem ipsum"
+        }
+    ],
 }
 ```
