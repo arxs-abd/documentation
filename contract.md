@@ -158,8 +158,8 @@ POST /ucontract/api/contract
 | name             | Name for Type Contract       |          String          |              Yes              |
 | no               | Number of Contract           |          String          |              Yes              |
 | type_contract    | Type of Contract             |          String          |              Yes              |
-| budget           | Budget of Contract           |          String          |              Yes              |
-| remaining_budget | Remaining Budget of Contract |          String          | Yes (If contract is On Going) |
+| budget           | Budget of Contract           |          Number          |              Yes              |
+| remaining_budget | Remaining Budget of Contract |          Number          | Yes (If contract is On Going) |
 | vendor           | Vendor of Contract           |          String          |              Yes              |
 | start_date       | Start Date of Contract       |          String          |              Yes              |
 | end_date         | End Date of Contract         |          String          |              Yes              |
@@ -234,8 +234,8 @@ PUT /ucontract/api/contract/:id
 | name             | Name for Type Contract       |          String          |              Yes              |
 | no               | Number of Contract           |          String          |              Yes              |
 | type_contract    | Type of Contract             |          String          |              Yes              |
-| budget           | Budget of Contract           |          String          |              Yes              |
-| remaining_budget | Remaining Budget of Contract |          String          | Yes (If contract is On Going) |
+| budget           | Budget of Contract           |          Number          |              Yes              |
+| remaining_budget | Remaining Budget of Contract |          Number          | Yes (If contract is On Going) |
 | vendor           | Vendor of Contract           |          String          |              Yes              |
 | start_date       | Start Date of Contract       |          String          |              Yes              |
 | end_date         | End Date of Contract         |          String          |              Yes              |
