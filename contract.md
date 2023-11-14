@@ -459,7 +459,7 @@ data : [
 error : null
 ```
 
-### 6. Import Contract From Excel
+### 5. Import Contract From Excel
 
 #### A. Endpoint
 
@@ -492,6 +492,230 @@ httpCode : 200,
 httpMessage : 'OK',
 message : 'Success Import Data',
 data : null,
+error : null
+```
+
+## Notification Type
+
+### 1. Get All Notification Type
+
+#### A. Endpoint
+
+```Javascript
+GET /ucontract/api/type-notif
+```
+
+#### B. Body, Params, and Query
+
+##### Body
+
+None
+
+##### Params
+
+None
+
+##### Query
+
+None
+
+#### C. Request and Response
+
+```Javascript
+// Request /ucontract/api/type-notif
+
+// Response
+200 OK
+httpCode : 200,
+httpMessage : 'OK',
+message : 'Success Get All Data',
+data : [
+    {
+        id: 1,
+        name: 'Create Contract',
+        email_template: 'Tes Templatenya'
+    }
+],
+error : null
+```
+
+### 2. Get Notification Type By ID
+
+#### A. Endpoint
+
+```Javascript
+GET /ucontract/api/type-notif/:id
+```
+
+#### B. Body, Params, and Query
+
+##### Body
+
+None
+
+##### Params
+
+| Field | Description             | Required |
+| ----- | ----------------------- | :------: |
+| id    | ID of Notification Type |   Yes    |
+
+##### Query
+
+None
+
+#### C. Request and Response
+
+```Javascript
+// Request /ucontract/api/type-notif/1
+
+// Response
+200 OK
+httpCode : 200,
+httpMessage : 'OK',
+message : 'Success Get Data',
+data :{
+    id: 1,
+    name: 'Create Contract',
+    email_template: 'Tes Templatenya'
+},
+error : null
+```
+
+### 3. Create Notification Type
+
+#### A. Endpoint
+
+```Javascript
+POST /ucontract/api/type-notif/
+```
+
+#### B. Body, Params, and Query
+
+##### Body
+
+| Field          | Description                          |  Type  | Required |
+| -------------- | ------------------------------------ | :----: | :------: |
+| name           | Name of Notification Type            | String |   Yes    |
+| email_template | Template Email for Notification Type | String |   Yes    |
+
+##### Params
+
+None
+
+##### Query
+
+None
+
+#### C. Request and Response
+
+```Javascript
+// Request /ucontract/api/type-notif/
+{
+    name: 'Create Contract',
+    email_template: 'Tes Templatenya'
+}
+
+// Response
+200 OK
+httpCode : 200,
+httpMessage : 'OK',
+message : 'Success Create Data',
+data :{
+    id: 1,
+    name: 'Create Contract',
+    email_template: 'Tes Templatenya'
+},
+error : null
+```
+
+### 4. Update Notification Type
+
+#### A. Endpoint
+
+```Javascript
+PUT /ucontract/api/type-notif/:id
+```
+
+#### B. Body, Params, and Query
+
+##### Body
+
+| Field          | Description                          |  Type  | Required |
+| -------------- | ------------------------------------ | :----: | :------: |
+| name           | Name of Notification Type            | String |   Yes    |
+| email_template | Template Email for Notification Type | String |   Yes    |
+
+##### Params
+
+| Field | Description             | Required |
+| ----- | ----------------------- | :------: |
+| id    | ID of Notification Type |   Yes    |
+
+##### Query
+
+None
+
+#### C. Request and Response
+
+```Javascript
+// Request /ucontract/api/type-notif/1
+{
+    name: 'Create Contract Lagi',
+    email_template: 'Tes Templatenya Lagi'
+}
+
+// Response
+200 OK
+httpCode : 200,
+httpMessage : 'OK',
+message : 'Success Update Data',
+data :{
+    id: 1,
+    name: 'Create Contract Lagi',
+    email_template: 'Tes Templatenya Lagi'
+},
+error : null
+```
+
+### 5. Delete Notification Type
+
+#### A. Endpoint
+
+```Javascript
+DELETE /ucontract/api/type-notif/:id
+```
+
+#### B. Body, Params, and Query
+
+##### Body
+
+None
+
+##### Params
+
+| Field | Description             | Required |
+| ----- | ----------------------- | :------: |
+| id    | ID of Notification Type |   Yes    |
+
+##### Query
+
+None
+
+#### C. Request and Response
+
+```Javascript
+// Request /ucontract/api/type-notif/1
+
+// Response
+200 OK
+httpCode : 200,
+httpMessage : 'OK',
+message : 'Success Delete Data',
+data :{
+    id: 1,
+    name: 'Create Contract Lagi',
+    email_template: 'Tes Templatenya Lagi'
+},
 error : null
 ```
 
