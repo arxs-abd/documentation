@@ -207,6 +207,7 @@ POST /ucontract/api/contract
 | end_date         | End Date of Contract         |          String          |              Yes              |
 | scope_of_work    | Scope Of Work in Contract    |          String          |              Yes              |
 | contract         | Status in Contract           | (New Contract, On Going) |              Yes              |
+| contract_owner   | Owner in Contract            |           Int            |              Yes              |
 | term_of_payments | Term of Payments of Contract |          Object          |              Yes              |
 | files            | Document for Contract        |           File           |              Yes              |
 
@@ -596,6 +597,7 @@ POST /ucontract/api/type-notif/
 | Field          | Description                          |  Type  | Required |
 | -------------- | ------------------------------------ | :----: | :------: |
 | name           | Name of Notification Type            | String |   Yes    |
+| subject        | Subject EMail of Notification Type   | String |   Yes    |
 | email_template | Template Email for Notification Type | String |   Yes    |
 
 ##### Params
@@ -643,6 +645,7 @@ PUT /ucontract/api/type-notif/:id
 | Field          | Description                          |  Type  | Required |
 | -------------- | ------------------------------------ | :----: | :------: |
 | name           | Name of Notification Type            | String |   Yes    |
+| subject        | Subject Email for Notification Type  | String |   Yes    |
 | email_template | Template Email for Notification Type | String |   Yes    |
 
 ##### Params
@@ -715,6 +718,313 @@ data :{
     id: 1,
     name: 'Create Contract Lagi',
     email_template: 'Tes Templatenya Lagi'
+},
+error : null
+```
+
+## Notification
+
+### 1. Get All Notification
+
+#### A. Endpoint
+
+```Javascript
+GET /ucontract/api/notification
+```
+
+#### B. Body, Params, and Query
+
+##### Body
+
+None
+
+##### Params
+
+None
+
+##### Query
+
+None
+
+#### C. Request and Response
+
+```Javascript
+// Request /ucontract/api/notifnotification
+
+// Response
+200 OK
+httpCode : 200,
+httpMessage : 'OK',
+message : 'Success Get All Data',
+data : [
+    {
+        id : 1,
+        title : 'Contoh Notif',
+        notification_type_id : 2,
+        notification_time : null,
+        budget_notification : 10,
+        subject : null,
+        cc : ['contoh@email.com'],
+        bcc : ['contoh2@email.com'],
+        template : 'Contoh Template',
+        created_at : '2023-11-14T19:59:59.699Z',
+        updated_at : '2023-11-14T19:59:59.699Z',
+        type_notification: {
+            id : 2,
+            name : 'Create Contract',
+            email_template: 'Tes Templatenya'
+        }
+    },
+],
+error : null
+```
+
+### 2. Get Notification By ID
+
+#### A. Endpoint
+
+```Javascript
+GET /ucontract/api/notification/:id
+```
+
+#### B. Body, Params, and Query
+
+##### Body
+
+None
+
+##### Params
+
+| Field | Description        | Required |
+| ----- | ------------------ | :------: |
+| id    | ID of Notification |   Yes    |
+
+##### Query
+
+None
+
+#### C. Request and Response
+
+```Javascript
+// Request /ucontract/api/notifnotification/1
+
+// Response
+200 OK
+httpCode : 200,
+httpMessage : 'OK',
+message : 'Success Get Data',
+data : {
+        id : 1,
+        title : 'Contoh Notif',
+        notification_type_id : 2,
+        notification_time : null,
+        budget_notification : 10,
+        subject : null,
+        cc : ['contoh@email.com'],
+        bcc : ['contoh2@email.com'],
+        template : 'Contoh Template',
+        created_at : '2023-11-14T19:59:59.699Z',
+        updated_at : '2023-11-14T19:59:59.699Z',
+        type_notification: {
+            id : 2,
+            name : 'Create Contract',
+            email_template: 'Tes Templatenya'
+    }
+},
+error : null
+```
+
+### 3. Create Notification
+
+#### A. Endpoint
+
+```Javascript
+POST /ucontract/api/notification
+```
+
+#### B. Body, Params, and Query
+
+##### Body
+
+| Field                | Description                                                     |  Type  |             Required              |
+| -------------------- | --------------------------------------------------------------- | :----: | :-------------------------------: |
+| title                | Title of Notification                                           | String |                Yes                |
+| notification_type_id | Template Email for Notification Type                            |  Int   |                Yes                |
+| notification_time    | Time to Run Notification By End Date                            |  Int   | Yes (If budget_notification null) |
+| budget_notification  | Budget Percentage for Remaining Budget Notification By End Date |  Int   |  Yes (If notification_time null)  |
+| cc                   | CC of Email in Notification                                     | Array  |                Yes                |
+| bcc                  | BCC of Email in Notification                                    | Array  |                Yes                |
+| template             | Template Email for Notification                                 | String |                Yes                |
+
+##### Params
+
+None
+
+##### Query
+
+None
+
+#### C. Request and Response
+
+```Javascript
+// Request /ucontract/api/notifnotification
+{
+    title : 'Contoh Notif',
+    notification_type_id : 2,
+    notification_time : 30,
+    cc : ['contoh@email.com'],
+    bcc : ['contoh2@email.com'],
+    template : 'Contoh Template',
+}
+
+// Response
+200 OK
+httpCode : 200,
+httpMessage : 'OK',
+message : 'Success Create Data',
+data : {
+        id : 1,
+        title : 'Contoh Notif',
+        notification_type_id : 2,
+        notification_time : null,
+        budget_notification : 10,
+        subject : null,
+        cc : ['contoh@email.com'],
+        bcc : ['contoh2@email.com'],
+        template : 'Contoh Template',
+        created_at : '2023-11-14T19:59:59.699Z',
+        updated_at : '2023-11-14T19:59:59.699Z',
+        type_notification: {
+            id : 2,
+            name : 'Create Contract',
+            email_template: 'Tes Templatenya'
+    }
+},
+error : null
+```
+
+### 4. Update Notification
+
+#### A. Endpoint
+
+```Javascript
+PUT /ucontract/api/notification
+```
+
+#### B. Body, Params, and Query
+
+##### Body
+
+| Field                | Description                                                     |  Type  |             Required              |
+| -------------------- | --------------------------------------------------------------- | :----: | :-------------------------------: |
+| title                | Title of Notification                                           | String |                Yes                |
+| notification_type_id | Template Email for Notification Type                            |  Int   |                Yes                |
+| notification_time    | Time to Run Notification By End Date                            |  Int   | Yes (If budget_notification null) |
+| budget_notification  | Budget Percentage for Remaining Budget Notification By End Date |  Int   |  Yes (If notification_time null)  |
+| cc                   | CC of Email in Notification                                     | Array  |                Yes                |
+| bcc                  | BCC of Email in Notification                                    | Array  |                Yes                |
+| template             | Template Email for Notification                                 | String |                Yes                |
+
+##### Params
+
+| Field | Description        | Required |
+| ----- | ------------------ | :------: |
+| id    | ID of Notification |   Yes    |
+
+##### Query
+
+None
+
+#### C. Request and Response
+
+```Javascript
+// Request /ucontract/api/notifnotification/1
+{
+    title : 'Contoh Notif Lagi',
+    notification_type_id : 2,
+    notification_time : 10,
+    cc : ['contoh@email.com'],
+    bcc : ['contoh2@email.com'],
+    template : 'Contoh Template',
+}
+
+// Response
+200 OK
+httpCode : 200,
+httpMessage : 'OK',
+message : 'Success Update Data',
+data : {
+        id : 1,
+        title : 'Contoh Notif Lagi',
+        notification_type_id : 2,
+        notification_time : 10,
+        budget_notification : null,
+        subject : null,
+        cc : ['contoh@email.com'],
+        bcc : ['contoh2@email.com'],
+        template : 'Contoh Template',
+        created_at : '2023-11-14T19:59:59.699Z',
+        updated_at : '2023-11-14T19:59:59.699Z',
+        type_notification: {
+            id : 2,
+            name : 'Create Contract',
+            email_template: 'Tes Templatenya'
+    }
+},
+error : null
+```
+
+### 5. Delete Notification
+
+#### A. Endpoint
+
+```Javascript
+DELETE /ucontract/api/notification/:id
+```
+
+#### B. Body, Params, and Query
+
+##### Body
+
+None
+
+##### Params
+
+| Field | Description        | Required |
+| ----- | ------------------ | :------: |
+| id    | ID of Notification |   Yes    |
+
+##### Query
+
+None
+
+#### C. Request and Response
+
+```Javascript
+// Request /ucontract/api/notifnotification/1
+
+// Response
+200 OK
+httpCode : 200,
+httpMessage : 'OK',
+message : 'Success Remove Data',
+data : {
+        id : 1,
+        title : 'Contoh Notif',
+        notification_type_id : 2,
+        notification_time : null,
+        budget_notification : 10,
+        subject : null,
+        cc : ['contoh@email.com'],
+        bcc : ['contoh2@email.com'],
+        template : 'Contoh Template',
+        created_at : '2023-11-14T19:59:59.699Z',
+        updated_at : '2023-11-14T19:59:59.699Z',
+        type_notification: {
+            id : 2,
+            name : 'Create Contract',
+            email_template: 'Tes Templatenya'
+    }
 },
 error : null
 ```
