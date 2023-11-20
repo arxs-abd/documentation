@@ -195,21 +195,25 @@ POST /ucontract/api/contract
 
 ##### Body
 
-| Field            | Description                  |           Type           |           Required            |
-| ---------------- | ---------------------------- | :----------------------: | :---------------------------: |
-| name             | Name for Type Contract       |          String          |              Yes              |
-| no               | Number of Contract           |          String          |              Yes              |
-| type_contract    | Type of Contract             |          String          |              Yes              |
-| budget           | Budget of Contract           |          String          |              Yes              |
-| remaining_budget | Remaining Budget of Contract |          String          | Yes (If contract is On Going) |
-| vendor           | Vendor of Contract           |          String          |              Yes              |
-| start_date       | Start Date of Contract       |          String          |              Yes              |
-| end_date         | End Date of Contract         |          String          |              Yes              |
-| scope_of_work    | Scope Of Work in Contract    |          String          |              Yes              |
-| contract         | Status in Contract           | (New Contract, On Going) |              Yes              |
-| contract_owner   | Owner in Contract            |           Int            |              Yes              |
-| term_of_payments | Term of Payments of Contract |          Object          |              Yes              |
-| files            | Document for Contract        |           File           |              Yes              |
+| Field            | Description                                  |           Type           |           Required            |
+| ---------------- | -------------------------------------------- | :----------------------: | :---------------------------: |
+| name             | Name for Type Contract                       |          String          |              Yes              |
+| no               | Number of Contract                           |          String          |              Yes              |
+| type_contract    | Type of Contract                             |          String          |              Yes              |
+| budget           | Budget of Contract                           |          String          |              Yes              |
+| remaining_budget | Remaining Budget of Contract                 |          String          | Yes (If contract is On Going) |
+| vendor           | Vendor of Contract                           |          String          |              Yes              |
+| start_date       | Start Date of Contract                       |          String          |              Yes              |
+| end_date         | End Date of Contract                         |          String          |              Yes              |
+| scope_of_work    | Scope Of Work in Contract                    |          String          |              Yes              |
+| contract         | Status in Contract                           | (New Contract, On Going) |              Yes              |
+| contract_owner   | Owner in Contract                            |           Int            |              Yes              |
+| term_of_payments | Term of Payments of Contract                 |          Object          |              Yes              |
+| email_cc         | CC Email for Notification of Contract        |          Object          |              Yes              |
+| email_bcc        | BCC Email for Notification of Contract       |          Object          |              Yes              |
+| whatsapp_number  | Whatsapp Number for Notification of Contract |          Object          |              Yes              |
+| notification     | Notification Setting for Contract            |          Object          |              Yes              |
+| files            | Document for Contract                        |           File           |              Yes              |
 
 ##### Params
 
@@ -229,8 +233,8 @@ None
     type_contract : 2
     budget : 20000
     vendor : 'Contoh Vendor'
-    start_date : '10-11-2023'
-    end_date : '10-11-2024'
+    start_date : '2023-11-10'
+    end_date : '2024-11-10'
     scope_of_work : 'Contoh Scope Of Work'
     contract : 'New Contract'
     term_of_payments: [
@@ -240,6 +244,20 @@ None
         }, {
             term : 'Contoh Term 2',
             percentage : 89.5
+        }
+    ]
+    email_cc : ['contoh@email.com']
+    email_bcc : ['contoh1@email.com']
+    whatsapp_number : ['+6288888888888']
+    notification : [
+        {
+            notification_id : 1
+            email_active : true
+            whatsapp_active : true
+        }, {
+            notification_id : 2
+            email_active : false
+            whatsapp_active : true
         }
     ]
 }
@@ -263,6 +281,9 @@ data : {
     term_of_payments : '[{\"term\":\"DP nya saja\",\"percentage\":10.5},{\"term\":\"Sisanya\",\"percentage\":89.5}]',
     files : '[\"1698125364186-picture-large.jpg\",\"1698125364186-picture-small.jpg\"]',
     status : 'On Going',
+    email_cc : ['contoh@email.com']
+    email_bcc : ['contoh1@email.com']
+    whatsapp_number : ['+6288888888888']
     created_by : 2,
     updated_at : 2023-10-23T21:29:24.192Z,
     created_at : 2023-10-23T21:29:24.192Z
@@ -871,9 +892,9 @@ None
 {
     title : 'Contoh Notif',
     notification_type_id : 2,
-    notification_time : 30,
-    cc : ['contoh@email.com'],
-    bcc : ['contoh2@email.com'],
+    notification_time : null,
+    budget_notification : 30,
+    subject : 'Contoh Subject',
     template : 'Contoh Template',
 }
 
@@ -889,8 +910,7 @@ data : {
         notification_time : null,
         budget_notification : 10,
         subject : null,
-        cc : ['contoh@email.com'],
-        bcc : ['contoh2@email.com'],
+        subject : 'Contoh Subject',
         template : 'Contoh Template',
         created_at : '2023-11-14T19:59:59.699Z',
         updated_at : '2023-11-14T19:59:59.699Z',
@@ -940,11 +960,11 @@ None
 ```Javascript
 // Request /ucontract/api/notifnotification/1
 {
-    title : 'Contoh Notif Lagi',
+    title : 'Contoh Notif Contoh',
     notification_type_id : 2,
-    notification_time : 10,
-    cc : ['contoh@email.com'],
-    bcc : ['contoh2@email.com'],
+    notification_time : null,
+    budget_notification : 30,
+    subject : 'Contoh Subject',
     template : 'Contoh Template',
 }
 
@@ -954,14 +974,11 @@ httpCode : 200,
 httpMessage : 'OK',
 message : 'Success Update Data',
 data : {
-        id : 1,
-        title : 'Contoh Notif Lagi',
+        title : 'Contoh Notif Contoh',
         notification_type_id : 2,
-        notification_time : 10,
-        budget_notification : null,
-        subject : null,
-        cc : ['contoh@email.com'],
-        bcc : ['contoh2@email.com'],
+        notification_time : null,
+        budget_notification : 30,
+        subject : 'Contoh Subject',
         template : 'Contoh Template',
         created_at : '2023-11-14T19:59:59.699Z',
         updated_at : '2023-11-14T19:59:59.699Z',
