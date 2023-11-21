@@ -228,15 +228,15 @@ None
 ```Javascript
 // Request
 {
-    no : 'CO1235'
-    name : 'Contoh Contract'
-    type_contract : 2
-    budget : 20000
-    vendor : 'Contoh Vendor'
-    start_date : '2023-11-10'
-    end_date : '2024-11-10'
-    scope_of_work : 'Contoh Scope Of Work'
-    contract : 'New Contract'
+    no : 'CO1235',
+    name : 'Contoh Contract',
+    type_contract : 2,
+    budget : 20000,
+    vendor : 'Contoh Vendor',
+    start_date : '2023-11-10',
+    end_date : '2024-11-10',
+    scope_of_work : 'Contoh Scope Of Work',
+    contract : 'New Contract',
     term_of_payments: [
         {
             term : 'Contoh Term 1',
@@ -246,9 +246,9 @@ None
             percentage : 89.5
         }
     ]
-    email_cc : ['contoh@email.com']
-    email_bcc : ['contoh1@email.com']
-    whatsapp_number : ['+6288888888888']
+    email_cc : ['contoh@email.com'],
+    email_bcc : ['contoh1@email.com'],
+    whatsapp_number : ['+6288888888888'],
     notification : [
         {
             notification_id : 1
@@ -331,15 +331,15 @@ None
 ```Javascript
 // Request : /ucontract/api/type-contract/19
 {
-    no : 'CO1235'
-    name : 'Contoh Contract Terbaru'
-    type_contract : 2
-    budget : 200000
-    vendor : 'Contoh Vendor'
-    start_date : '10-11-2023'
-    end_date : '10-11-2024'
-    scope_of_work : 'Contoh Scope Of Work Terbaru'
-    contract : 'New Contract'
+    no : 'CO1235',
+    name : 'Contoh Contract Terbaru',
+    type_contract : 2,
+    budget : 200000,
+    vendor : 'Contoh Vendor',
+    start_date : '10-11-2023',
+    end_date : '10-11-2024',
+    scope_of_work : 'Contoh Scope Of Work Terbaru',
+    contract : 'New Contract',
     term_of_payments: [
         {
             term : 'Contoh Term 1',
@@ -349,7 +349,28 @@ None
             percentage :89.5
         }
     ],
-    files : 'Upload Document For Contract'
+    email_cc : ['contoh@email.com'],
+    email_bcc : ['contoh1@email.com'],
+    whatsapp_number : ['+6288888888888'],
+    notification : [
+        {
+            id : 1,
+            notification_id : 1,
+            email_active : true,
+            whatsapp_active : true,
+            remove : true // FOR REMOVED NOTIFICATION
+        }, {
+            id : 2,
+            notification_id : 2,
+            email_active : true,
+            whatsapp_active : true,
+        }, {
+            notification_id : 2,
+            email_active : true,
+            whatsapp_active : true,
+        }
+    ]
+
 }
 // Response
 200 OK
@@ -867,15 +888,14 @@ POST /ucontract/api/notification
 
 ##### Body
 
-| Field                | Description                                                     |  Type  |             Required              |
-| -------------------- | --------------------------------------------------------------- | :----: | :-------------------------------: |
-| title                | Title of Notification                                           | String |                Yes                |
-| notification_type_id | Template Email for Notification Type                            |  Int   |                Yes                |
-| notification_time    | Time to Run Notification By End Date                            |  Int   | Yes (If budget_notification null) |
-| budget_notification  | Budget Percentage for Remaining Budget Notification By End Date |  Int   |  Yes (If notification_time null)  |
-| cc                   | CC of Email in Notification                                     | Array  |                Yes                |
-| bcc                  | BCC of Email in Notification                                    | Array  |                Yes                |
-| template             | Template Email for Notification                                 | String |                Yes                |
+| Field               | Description                                                     |  Type  | Required |
+| ------------------- | --------------------------------------------------------------- | :----: | :------: |
+| title               | Title of Notification                                           | String |   Yes    |
+| notification_type   | Notification Type for Notification                              |  Int   |   Yes    |
+| notification_time   | Time to Run Notification By End Date                            |  Int   |    No    |
+| budget_notification | Budget Percentage for Remaining Budget Notification By End Date |  Int   |    No    |
+| subject             | Subject Email for Notification                                  | String |   Yes    |
+| template            | Template Email for Notification                                 | String |   Yes    |
 
 ##### Params
 
@@ -890,8 +910,7 @@ None
 ```Javascript
 // Request /ucontract/api/notifnotification
 {
-    title : 'Contoh Notif',
-    notification_type_id : 2,
+    notification_type : 'Expiring',
     notification_time : null,
     budget_notification : 30,
     subject : 'Contoh Subject',
@@ -905,11 +924,9 @@ httpMessage : 'OK',
 message : 'Success Create Data',
 data : {
         id : 1,
-        title : 'Contoh Notif',
-        notification_type_id : 2,
+        notification_type : 'Expiring',
         notification_time : null,
-        budget_notification : 10,
-        subject : null,
+        budget_notification : 30,
         subject : 'Contoh Subject',
         template : 'Contoh Template',
         created_at : '2023-11-14T19:59:59.699Z',
@@ -935,15 +952,14 @@ PUT /ucontract/api/notification
 
 ##### Body
 
-| Field                | Description                                                     |  Type  |             Required              |
-| -------------------- | --------------------------------------------------------------- | :----: | :-------------------------------: |
-| title                | Title of Notification                                           | String |                Yes                |
-| notification_type_id | Template Email for Notification Type                            |  Int   |                Yes                |
-| notification_time    | Time to Run Notification By End Date                            |  Int   | Yes (If budget_notification null) |
-| budget_notification  | Budget Percentage for Remaining Budget Notification By End Date |  Int   |  Yes (If notification_time null)  |
-| cc                   | CC of Email in Notification                                     | Array  |                Yes                |
-| bcc                  | BCC of Email in Notification                                    | Array  |                Yes                |
-| template             | Template Email for Notification                                 | String |                Yes                |
+| Field               | Description                                                     |  Type  | Required |
+| ------------------- | --------------------------------------------------------------- | :----: | :------: |
+| title               | Title of Notification                                           | String |   Yes    |
+| notification_type   | Notification Type for Notification                              |  Int   |   Yes    |
+| notification_time   | Time to Run Notification By End Date                            |  Int   |    No    |
+| budget_notification | Budget Percentage for Remaining Budget Notification By End Date |  Int   |    No    |
+| subject             | Subject Email for Notification                                  | String |   Yes    |
+| template            | Template Email for Notification                                 | String |   Yes    |
 
 ##### Params
 
@@ -960,10 +976,9 @@ None
 ```Javascript
 // Request /ucontract/api/notifnotification/1
 {
-    title : 'Contoh Notif Contoh',
-    notification_type_id : 2,
+    notification_type : 'Expiring Update',
     notification_time : null,
-    budget_notification : 30,
+    budget_notification : 45,
     subject : 'Contoh Subject',
     template : 'Contoh Template',
 }
@@ -974,10 +989,9 @@ httpCode : 200,
 httpMessage : 'OK',
 message : 'Success Update Data',
 data : {
-        title : 'Contoh Notif Contoh',
-        notification_type_id : 2,
+        notification_type : 'Expiring Update',
         notification_time : null,
-        budget_notification : 30,
+        budget_notification : 45,
         subject : 'Contoh Subject',
         template : 'Contoh Template',
         created_at : '2023-11-14T19:59:59.699Z',
