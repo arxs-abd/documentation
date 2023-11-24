@@ -207,7 +207,7 @@ POST /ucontract/api/contract
 | end_date         | End Date of Contract                         |          String          |              Yes              |
 | scope_of_work    | Scope Of Work in Contract                    |          String          |              Yes              |
 | contract         | Status in Contract                           | (New Contract, On Going) |              Yes              |
-| contract_owner   | Owner in Contract                            |           Int            |              Yes              |
+| contract_owner   | NIK of Owner in Contract                     |           Int            |              Yes              |
 | term_of_payments | Term of Payments of Contract                 |          Object          |              Yes              |
 | email_cc         | CC Email for Notification of Contract        |          Object          |              Yes              |
 | email_bcc        | BCC Email for Notification of Contract       |          Object          |              Yes              |
@@ -507,7 +507,7 @@ error : null
 #### A. Endpoint
 
 ```Javascript
-GET /ucontract/api/contract/import
+POST /ucontract/api/contract/import
 ```
 
 #### B. Body, Params, and Query
