@@ -504,6 +504,72 @@ error : null
 
 ### 5. Import Contract From Excel
 
+### 6. Change Status Of Contract
+
+#### A. Endpoint
+
+```Javascript
+GET /ucontract/api/contract/:id/status
+```
+
+#### B. Body, Params, and Query
+
+##### Body
+
+| Field  | Description              |                Type                | Required |
+| ------ | ------------------------ | :--------------------------------: | -------- |
+| status | New Status of Contract   | String (Closed, Early Termination) | Yes      |
+| notes  | Notes of Contract Status |               String               | Yes      |
+
+##### Params
+
+| Field | Description             | Required |
+| ----- | ----------------------- | :------: |
+| id    | ID of Notification Type |   Yes    |
+
+##### Query
+
+None
+
+#### C. Request and Response
+
+```Javascript
+// Request /ucontract/api/contract/19/status
+{
+    status : 'Closed',
+    notes : 'Contoh Notes'
+}
+
+// Response
+200 OK
+httpCode : 200,
+httpMessage : 'OK',
+message : 'Success Get Data',
+data : {
+    id : 19,
+    no : 'CO1235'
+    name : 'Contoh Contract'
+    type_contract : 2
+    budget : 20000
+    vendor : 'Contoh Vendor'
+    start_date : '10-11-2023'
+    end_date : '10-11-2024'
+    scope_of_work : 'Contoh Scope Of Work'
+    contract : 'New Contract'
+    scope_of_work : 'Sangat Jauh Sekali',
+    term_of_payments : '[{\"term\":\"DP nya saja\",\"percentage\":10.5},{\"term\":\"Sisanya\",\"percentage\":89.5}]',
+    files : '[\"1698125364186-picture-large.jpg\",\"1698125364186-picture-small.jpg\"]',
+    status : 'CLosed',
+    email_cc : ['contoh@email.com']
+    email_bcc : ['contoh1@email.com']
+    whatsapp_number : ['+6288888888888']
+    created_by : 2,
+    updated_at : 2023-10-23T21:29:24.192Z,
+    created_at : 2023-10-23T21:29:24.192Z
+    error : null
+}
+```
+
 #### A. Endpoint
 
 ```Javascript
