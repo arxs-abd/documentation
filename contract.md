@@ -463,7 +463,14 @@ None
 
 ##### Query
 
-None
+| Field    | Description                           |                                         Type                                          | Required |
+| -------- | ------------------------------------- | :-----------------------------------------------------------------------------------: | :------: |
+| page     | Number Page for Contract              |                                          Int                                          |    No    |
+| pageSize | Page Size Every Page of Contract      |                                          Int                                          |    No    |
+| type     | Type of Contract                      |         String (MY_CONTRACT, ON_GOING, CLOSED, EARLY_TERMINATION, CLOSED_ALL)         |    No    |
+| search   | Search a value in Contract Field      |                                        String                                         |    No    |
+| field    | What Field to Order (Default ID)      | String (no, name, scope_of_work, term_of_payments, vendor, typeContract, user, owner) |    No    |
+| order    | What Order to Show Data (Default asc) |                                  String (asc, desc)                                   |    No    |
 
 #### C. Request and Response
 
@@ -503,6 +510,40 @@ error : null
 ```
 
 ### 5. Import Contract From Excel
+
+#### A. Endpoint
+
+```Javascript
+POST /ucontract/api/contract/import
+```
+
+#### B. Body, Params, and Query
+
+##### Body
+
+None
+
+##### Params
+
+None
+
+##### Query
+
+None
+
+#### C. Request and Response
+
+```Javascript
+// Request /ucontract/api/contract/export
+
+// Response
+200 OK
+httpCode : 200,
+httpMessage : 'OK',
+message : 'Success Import Data',
+data : null,
+error : null
+```
 
 ### 6. Change Status Of Contract
 
@@ -568,40 +609,6 @@ data : {
     created_at : 2023-10-23T21:29:24.192Z
     error : null
 }
-```
-
-#### A. Endpoint
-
-```Javascript
-POST /ucontract/api/contract/import
-```
-
-#### B. Body, Params, and Query
-
-##### Body
-
-None
-
-##### Params
-
-None
-
-##### Query
-
-None
-
-#### C. Request and Response
-
-```Javascript
-// Request /ucontract/api/contract/export
-
-// Response
-200 OK
-httpCode : 200,
-httpMessage : 'OK',
-message : 'Success Import Data',
-data : null,
-error : null
 ```
 
 ## Notification Type
