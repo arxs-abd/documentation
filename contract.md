@@ -564,9 +564,9 @@ GET /ucontract/api/contract/:id/status
 
 ##### Params
 
-| Field | Description             | Required |
-| ----- | ----------------------- | :------: |
-| id    | ID of Notification Type |   Yes    |
+| Field | Description    | Required |
+| ----- | -------------- | :------: |
+| id    | ID of Contract |   Yes    |
 
 ##### Query
 
@@ -609,6 +609,45 @@ data : {
     created_at : 2023-10-23T21:29:24.192Z
     error : null
 }
+```
+
+### 7. Export Contract To Excel
+
+#### A. Endpoint
+
+```Javascript
+GET /ucontract/api/contract/export
+```
+
+#### B. Body, Params, and Query
+
+##### Body
+
+None
+
+##### Params
+
+None
+
+##### Query
+
+| Field  | Description                                                                       | Required |
+| ------ | --------------------------------------------------------------------------------- | :------: |
+| id     | ID of Contract (For One Contract Export)                                          |    No    |
+| status | Status of Contract (MY_CONTRACT, ON_GOING, CLOSED, EARLY_TERMINATION, CLOSED_ALL) |    No    |
+
+#### C. Request and Response
+
+```Javascript
+// Request /ucontract/api/contract/export?id=3
+
+// Response
+200 OK
+httpCode : 200,
+httpMessage : 'OK',
+message : 'Success Import Data',
+data : null,
+error : null
 ```
 
 ## Notification Type
